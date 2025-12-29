@@ -20,9 +20,6 @@ function App() {
     { id: '1', name: 'Notion', url: 'https://www.notion.so/', icon: 'StickyNote' },
     { id: '2', name: 'Calendar', url: 'https://calendar.google.com/calendar/u/0', icon: 'Calendar' },
   ])
-  const [newCardName, setNewCardName] = useState('')
-  const [newCardUrl, setNewCardUrl] = useState('')
-  const [newCardIcon, setNewCardIcon] = useState('')
 
   useEffect(() => {
     // Load saved cards from localStorage
@@ -97,23 +94,6 @@ function App() {
         return <ExternalLink {...iconProps} />
       default:
         return <ExternalLink {...iconProps} />
-    }
-  }
-
-  const addCard = () => {
-    if (newCardName && newCardUrl) {
-      const newCard: UrlCard = {
-        id: Date.now().toString(),
-        name: newCardName,
-        url: newCardUrl,
-        icon: 'ExternalLink'
-      }
-      const updatedCards = [...cards, newCard]
-      setCards(updatedCards)
-      localStorage.setItem('urlCards', JSON.stringify(updatedCards))
-      setNewCardName('')
-      setNewCardUrl('')
-      setNewCardIcon('')
     }
   }
 
